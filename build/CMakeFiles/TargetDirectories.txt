@@ -1,0 +1,3 @@
+/Users/derek/Developer/Code/Git/RollerCoasterGenerator/build/CMakeFiles/create.exe.dir
+/Users/derek/Developer/Code/Git/RollerCoasterGenerator/build/CMakeFiles/edit_cache.dir
+/Users/derek/Developer/Code/Git/RollerCoasterGenerator/build/CMakeFiles/rebuild_cache.dir
