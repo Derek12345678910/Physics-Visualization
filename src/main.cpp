@@ -1,6 +1,5 @@
-#include <GLFW/glfw3.h>
 #include <iostream>
-#include "files.h"
+#include "../files.h"
 
 using namespace std;
 

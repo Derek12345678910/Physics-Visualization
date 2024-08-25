@@ -13,11 +13,16 @@ find_package(OpenGL REQUIRED)
 # Include directories
 include_directories(${GLFW_ROOT}/include)
 
+# Add all files
+file(GLOB SOURCE_FILES
+    "${CMAKE_SOURCE_DIR}/src/*.cpp"
+)
+
 # Add the executable
-add_executable(create.exe src/main.cpp)
+add_executable(run.exe ${SOURCE_FILES})
 
 # Link libraries
-target_link_libraries(create.exe OpenGL::GL ${GLFW_ROOT}/lib/libglfw.dylib)
+target_link_libraries(run.exe OpenGL::GL ${GLFW_ROOT}/lib/libglfw.dylib)
 
 # Optionally specify the location of GLFW headers and library if necessary
 link_directories(${GLFW_ROOT}/lib)
