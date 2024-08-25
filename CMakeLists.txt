@@ -3,15 +3,17 @@ project(RollerCoaster)
 
 set(CMAKE_CXX_STANDARD 17)
 
-# Specify GLFW path
-# \ slash because MAC OS
+# Specify library paths
+
 set(GLFW_ROOT ${CMAKE_SOURCE_DIR}/libs/glfw)
+set(GLEW_ROOT ${CMAKE_SOURCE_DIR}/libs/glew)
 
 # Find OpenGL package
 find_package(OpenGL REQUIRED)
 
 # Include directories
 include_directories(${GLFW_ROOT}/include)
+include_directories(${GLEW_ROOT}/include)
 
 # Add all files
 file(GLOB SOURCE_FILES
@@ -22,7 +24,4 @@ file(GLOB SOURCE_FILES
 add_executable(run.exe ${SOURCE_FILES})
 
 # Link libraries
-target_link_libraries(run.exe OpenGL::GL ${GLFW_ROOT}/lib/libglfw.dylib)
-
-# Optionally specify the location of GLFW headers and library if necessary
-link_directories(${GLFW_ROOT}/lib)
+target_link_libraries(run.exe OpenGL::GL ${GLFW_ROOT}/lib/libglfw.dylib ${GLEW_ROOT}/lib/libGLEW.dylib)
