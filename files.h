@@ -1,14 +1,13 @@
 #ifndef files.h
 #define files.h
 
+// STD Libraries
 #include <iostream>
+#include <vector>
 
 // Include GLFW Header
-#include <GLFW/glfw3.h>
 #include <GL/glew.h>
-
-// Libaries
-#include <vector>
+#include <GLFW/glfw3.h>
 
 using namespace std;
 
@@ -36,17 +35,11 @@ private:
     GLuint vertexArray;
     GLuint vertexBuffer;
     GLuint shaderProgram;
-
-    GLuint compileShader(const char* source, GLenum shaderType);
-    GLuint createShaderProgram(const char* vertexSource, const char* fragmentSource);
-
 public:
     Drawer();
     ~Drawer();
 
     bool initialize();
-    void render();
-    void cleanup();
 };
 
 // Class of the coaster elements

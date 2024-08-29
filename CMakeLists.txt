@@ -8,12 +8,12 @@ set(CMAKE_CXX_STANDARD 17)
 set(GLFW_ROOT ${CMAKE_SOURCE_DIR}/libs/glfw)
 set(GLEW_ROOT ${CMAKE_SOURCE_DIR}/libs/glew)
 
-# Find OpenGL package
-find_package(OpenGL REQUIRED)
-
 # Include directories
 include_directories(${GLFW_ROOT}/include)
 include_directories(${GLEW_ROOT}/include)
+
+# Find OpenGL package
+find_package(OpenGL REQUIRED)
 
 # Add all files
 file(GLOB SOURCE_FILES
