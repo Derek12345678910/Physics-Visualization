@@ -1,17 +1,18 @@
-#ifndef files.h
-#define files.h
+#ifndef files_h
+#define files_h
 
 // STD Libraries
 #include <iostream>
 #include <vector>
+#include <string>
+#include <fstream>
+#include <sstream>
 
 // Include GLFW Header
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
 using namespace std;
-
-// Functions
 
 // Window class
 class Window {
@@ -23,8 +24,7 @@ public:
 
     // Open the window
     bool initialize();
-
-    // Edit the window
+    // Control the window
     void mainLoop();
 };
 
@@ -32,26 +32,39 @@ public:
 class Drawer
 {
 private:
-    GLuint vertexArray;
-    GLuint vertexBuffer;
+    float* vertices = nullptr;
+    int vertexCount; 
+
     GLuint shaderProgram;
+    GLuint VAO, VBO;
 public:
+
     Drawer();
     ~Drawer();
-
+    // render the images
+    bool draw();
+    // set up vertices, calculations, shaders
     bool initialize();
+    // set up vertices
+    bool setVertices(const float* newVertices, int vertexAmount);
 };
 
-// Class of the coaster elements
-class Coaster
+// Class of the question elements
+class Solver
 {
-private:
-    double startHeight;
-    double endHeight;
-    double objectMass;
-    double length;
-    double friction;
+private: 
     // could add more
+public:
+    Solver();
+    ~Solver();
+
+    bool calculate();
+
 };
+
+// create global objects
+extern Drawer drawerObj;
+extern Window windowObj;
+extern Solver solverObj;
 
 #endif
