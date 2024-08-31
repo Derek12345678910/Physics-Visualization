@@ -2,9 +2,6 @@
 
 using namespace std;
 
-// Define the drawer class
-Drawer drawer;
-
 // Constructor
 Window::Window() : window(nullptr) {}
 
@@ -16,13 +13,23 @@ Window::~Window() {
     glfwTerminate();
 }
 
+void setWindow(){
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GLFW_TRUE);
+
+}
+
 bool Window::initialize() {
     if (!glfwInit()) {
         cerr << "Failed to initialize GLFW" << endl;
         return false;
     }
 
-    window = glfwCreateWindow(800, 600, "Roller Coaster Generator", nullptr, nullptr);
+    setWindow();
+
+    window = glfwCreateWindow(800, 600, "Kinematics Simulator", nullptr, nullptr);
     if (!window) {
         cerr << "Failed to create GLFW window" << endl;
         glfwTerminate();
@@ -50,8 +57,13 @@ void Window::mainLoop() {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         // render
+        if (!drawerObj.draw()){
+            cerr << "Failed to render" << endl;
+        }
 
+        // sweap front and back buffers
         glfwSwapBuffers(window);
+        // poll and process events
         glfwPollEvents();
     }
 }

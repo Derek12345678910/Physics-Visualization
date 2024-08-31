@@ -2,27 +2,28 @@
 
 using namespace std;
 
+// define instances of objects
+Drawer drawerObj;
+Window windowObj;
+Solver solverObj;
+
 // Main entry point
 int main() {
-    // Define the window class
-    Window window;
-    // Define drawer class
-    Drawer drawer;
     
     // Initialize the window
-    if (!window.initialize()) {
+    if (!windowObj.initialize()) {
         cerr << "Window initialization failed." << endl;
         return -1;
     }
 
     // Initialize the drawer
-    if (!drawer.initialize()) {
+    if (!drawerObj.initialize()) {
         cerr << "Drawer initialization failed." << endl;
-        return -1;
+        return -2;
     }
 
     // Enter the main loop
-    window.mainLoop();
+    windowObj.mainLoop();
 
     return 0;
 }
